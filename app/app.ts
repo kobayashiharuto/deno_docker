@@ -1,5 +1,5 @@
 import { Application } from "https://deno.land/x/oak@v7.7.0/mod.ts";
-import { router } from "./routes.ts";
+import { router } from "./router.ts";
 
 const PORT = 8000;
 

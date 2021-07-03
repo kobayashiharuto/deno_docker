@@ -10,3 +10,11 @@ services:
       - ./app/:/deno-api
     ports:
       - "80:8000"
+  db:
+    image: postgres:12.0-alpine
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=password
+      - TZ=Asia/Tokyo
+    env_file: development.env
