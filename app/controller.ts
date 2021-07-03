@@ -26,5 +26,4 @@ const getBooks = ({ response }: { response: any }) => {
   response.body = books;
 };
 
-
-export default getBooks;
+export { getBooks };
