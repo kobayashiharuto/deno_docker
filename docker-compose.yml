@@ -10,11 +10,14 @@ services:
       - ./app/:/deno-api
     ports:
       - "80:8000"
+    depends_on:
+      - db
   db:
-    image: postgres:12.0-alpine
+    container_name: mysql-db
+    build: ./mysql
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_PASSWORD=password
-      - TZ=Asia/Tokyo
-    env_file: development.env
+      - ./mysql/db:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+    env_file: ./mysql/dev.env
+    ports:
+      - "3306:3306"
