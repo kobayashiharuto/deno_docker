@@ -12,6 +12,8 @@ services:
       - "80:8000"
     depends_on:
       - db
+    env_file: ./app/dev.env
+
   db:
     container_name: mysql-db
     build: ./mysql
@@ -19,5 +21,3 @@ services:
       - ./mysql/db:/var/lib/mysql
       - ./mysql/init:/docker-entrypoint-initdb.d
     env_file: ./mysql/dev.env
-    ports:
-      - "3306:3306"
